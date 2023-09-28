@@ -9,7 +9,6 @@ export default function SinglePage() {
   const URL = `${baseUrl}/movies/${id}`;
   const [product, isload] = useGetProduct(URL);
   if (isload) {
-    console.log(1);
     return <h1 className="text-white"> loading ...</h1>;
   }
   return (

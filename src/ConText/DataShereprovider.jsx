@@ -10,7 +10,6 @@ export function DataShereprovider(props) {
     </DataShere.Provider>
   );
 }
-
 DataShereprovider.propTypes = {
   children: PropTypes.object,
 };
