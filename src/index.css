@@ -1,0 +1,110 @@
+body {
+  background-color: black;
+}
+#root {
+  padding: 0;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logoMovies {
+  width: 45px;
+}
+
+.form-control {
+  border-radius: 50px !important;
+}
+
+.search__Eng {
+  position: relative;
+}
+.searchBar {
+  position: absolute;
+  color: #f00;
+  right: 6%;
+  top: 5px;
+  font-size: 20px;
+}
+.sideLeft {
+  border-right: 1px solid;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.btn-ganres {
+  padding: 6px;
+  border-radius: 35px;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  align-items: center;
+  gap: 40px;
+  font-size: 12px;
+  background-color: #000;
+  color: #fff;
+  font-weight: 800;
+  margin: 15px 0;
+  transition: all 0.2s;
+}
+
+.btn-ganres i {
+  font-size: 20px;
+  color: #ff0000;
+}
+
+.btn-ganres.active {
+  background-color: #ff0000;
+}
+.btn-ganres.active i {
+  color: #fff;
+}
+.btn-ganres:hover {
+  background-color: #ff0000;
+}
+.btn-ganres:hover i {
+  color: #fff;
+}
+
+.btn-ganres.active:hover {
+  background-color: #ff0000;
+}
+
+@media screen and (max-width: 992px) {
+  .sideLeft {
+    height: auto;
+    display: flex;
+  }
+  .btn-ganres {
+    margin: 15px;
+    height: 40px;
+  }
+}
+
+.sideRight {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  transition: all 0.3s;
+}
+
+.card__img {
+  height: 400px;
+}
+
+.card__body {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 10px;
+}
