@@ -6,10 +6,10 @@ export default function MyButton({ name, icon, setQuery, query }) {
   return (
     <button
       onClick={handelActive}
-      className={`btn-ganres ${query === name ? "active" : null}`}
+      className={`btn-ganres ${query === name ? "active" : ""}`}
     >
       <i className={icon}></i>
-      {name}
+      <span>{name}</span>
     </button>
   );
 }

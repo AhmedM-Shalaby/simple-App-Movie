@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function MyCard(props) {
   return (
-    <div className="col-lg-4 col-md-4 col-sm-6 mb-3">
+    <div className=" col-md-4 col-sm-6 mb-3">
       <div className="card__movie">
         <img
           className="card__img"
@@ -23,3 +23,4 @@ export default function MyCard(props) {
 MyCard.propTypes = {
   item: PropTypes.object,
 };
+3;

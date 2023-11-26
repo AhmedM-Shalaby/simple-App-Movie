@@ -1,29 +1,32 @@
-// import { useState } from "react";
 import { useContext, useState } from "react";
-import useGetData from "./API/useGetData";
-import MyButton from "./MyButton";
-import MyCard from "./MyCard";
+import useGetData from "../components/API/useGetData";
+import MyButton from "../components/MyButton";
+import MyCard from "../components/MyCard";
 import { DataShere } from "../ConText/dataShere";
-import { baseUrl } from "./API/httpserver";
+import { baseUrl } from "../components/API/httpserver";
 
 export default function HomeMovies() {
   const { search } = useContext(DataShere);
   const [query, setQuery] = useState("New");
-  const urlMovies = `${baseUrl}/movies${
-    query !== "New" ? `?category=${query}` : ""
-  }`;
+  const urlMovies = `${baseUrl}/movies`;
   const urlGanres = `${baseUrl}/ganres`;
-  const [dataMoives] = useGetData(urlMovies);
+  const [data] = useGetData(urlMovies);
   const [dataGanres] = useGetData(urlGanres);
+  const dataMoives = data.filter((moive) =>
+    query !== "New" ? moive.category === query : moive
+  );
+
   const FiterMovies = dataMoives.filter((item) =>
     search === ""
       ? item
-      : item.name.toLowerCase().includes(search.toLowerCase())
+      : item.name.toLowerCase().includes(search.toLowerCase()) || query == "New"
+      ? item
+      : `?category=${query}`
   );
   return (
-    <div className="container-fluid mt-5">
-      <div className="row">
-        <div className="col-lg-2 sideLeft">
+    <main className="container-fluid ">
+      <div className="row justify-content-end ">
+        <div className="col-lg-3 sideLeft">
           <MyButton
             icon={"bi bi-house"}
             name={"New"}
@@ -40,8 +43,8 @@ export default function HomeMovies() {
             />
           ))}
         </div>
-        <div className="col-lg-10">
-          <div className="row sideRight">
+        <div className="col-lg-9 sideRight">
+          <div className="row">
             {FiterMovies[0] ? (
               FiterMovies.map((item) => {
                 return <MyCard key={item.id} item={item} />;
@@ -54,6 +57,6 @@ export default function HomeMovies() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

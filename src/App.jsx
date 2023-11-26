@@ -1,8 +1,8 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import HomeMovies from "./components/HomeMovies";
 import { MyNavBar } from "./components/MyNavBar";
-import SinglePage from "./components/SinglePage";
 import { useEffect, useState } from "react";
+import HomeMovies from "./pages/HomeMovies";
+import SinglePage from "./pages/SinglePage";
 
 function App() {
   const [show, setShow] = useState(true);

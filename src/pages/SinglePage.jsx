@@ -1,8 +1,8 @@
 // import React from 'react'
 
 import { useParams } from "react-router-dom";
-import { useGetProduct } from "./API/useGetProduct";
-import { baseUrl } from "./API/httpserver";
+import { useGetProduct } from "../components/API/useGetProduct";
+import { baseUrl } from "../components/API/httpserver";
 
 export default function SinglePage() {
   const { id } = useParams();
