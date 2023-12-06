@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import useGetData from "../components/API/useGetData";
 import MyButton from "../components/MyButton";
 import MyCard from "../components/MyCard";
@@ -7,6 +7,7 @@ import { baseUrl } from "../components/API/httpserver";
 
 export default function HomeMovies() {
   const { search } = useContext(DataShere);
+  const main = useRef();
   const [query, setQuery] = useState("New");
   const urlMovies = `${baseUrl}/movies`;
   const urlGanres = `${baseUrl}/ganres`;
@@ -15,16 +16,22 @@ export default function HomeMovies() {
   const dataMoives = data.filter((moive) =>
     query !== "New" ? moive.category === query : moive
   );
-
   const FiterMovies = dataMoives.filter((item) =>
-    search === ""
-      ? item
-      : item.name.toLowerCase().includes(search.toLowerCase()) || query == "New"
-      ? item
-      : `?category=${query}`
+    search !== ""
+      ? item.name.toLowerCase().includes(search.toLowerCase()) ||
+        item.category?.toLowerCase().includes(search.toLowerCase())
+      : item
   );
+  console.log(FiterMovies);
+  useEffect(() => {
+    main.current.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [query]);
   return (
-    <main className="container-fluid ">
+    <main className="container-fluid " ref={main}>
       <div className="row justify-content-end ">
         <div className="col-lg-3 sideLeft">
           <MyButton
